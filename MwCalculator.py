@@ -390,8 +390,8 @@ def calculate_moment_magnitude(wave_path, hypo_df, pick_df, station, calibration
             
             # fitting the spectrum, find the optimal value of Omega_O, corner frequency and Q using grid search algorithm
             try:
-                fit_P = fit_spectrum(freq_P, spec_P, float(P_pick_time - origin_time), f_min, f_max)  # 10 for corner frequency initial guess, and 1200 for Q initial guess
-                fit_S = fit_spectrum(freq_S, spec_S, float(S_pick_time - origin_time), f_min, f_max)  # 10 for corner frequency initial guess, and 1200 for Q initial guess
+                fit_P = fit_spectrum(freq_P, spec_P, abs(float(P_pick_time - origin_time)), f_min, f_max)  # 10 for corner frequency initial guess, and 1200 for Q initial guess
+                fit_S = fit_spectrum(freq_S, spec_S, abs(float(S_pick_time - origin_time)), f_min, f_max)  # 10 for corner frequency initial guess, and 1200 for Q initial guess
             except Exception as e:
                 logger.exception("An error occured during runtime:", str(e))
                 continue
